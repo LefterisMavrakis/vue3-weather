@@ -2,6 +2,7 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import forecastAPI from "@/api/services/forecast";
 import { ApiForecastResponse } from "@/api/services/forecast/types";
+import { getAverageNumber, getMostFrequentNumber } from "@/utils/utils";
 
 const useForecastStore = defineStore("forecast", () => {
   const isForecastLoading = ref(true);
@@ -12,16 +13,17 @@ const useForecastStore = defineStore("forecast", () => {
       return 0;
     }
 
-    const dailyTemperaturesSummary =
-      forecastData.value.daily.temperature_2m_max.reduce((acc, value) => {
-        return acc + value;
-      }, 0);
+    return Math.round(
+      getAverageNumber(forecastData.value.daily.temperature_2m_max)
+    );
+  });
 
-    const dailyTemperaturesAverage =
-      dailyTemperaturesSummary /
-      forecastData.value.daily.temperature_2m_max.length;
+  const averageDailyFeelLikeTemperature = computed(() => {
+    if (!forecastData.value) return "0";
 
-    return Math.round(dailyTemperaturesAverage);
+    return `${Math.round(
+      getAverageNumber(forecastData.value.daily.apparent_temperature_max)
+    )} ${forecastData.value?.daily_units.apparent_temperature_max}`;
   });
 
   const averageDailyTemperatureUnit = computed(
@@ -31,6 +33,46 @@ const useForecastStore = defineStore("forecast", () => {
   const currentWeatherCode = computed(
     () => forecastData.value?.current_weather.weathercode
   );
+
+  const maximumDailyWindSpeed = computed(() => {
+    if (!forecastData.value) return "0";
+
+    return `${Math.max(...forecastData.value.daily.wind_speed_10m_max)} ${
+      forecastData.value.daily_units.wind_speed_10m_max
+    }`;
+  });
+
+  const maximumDailyWindGust = computed(() => {
+    if (!forecastData.value) return "0";
+
+    return `${Math.max(...forecastData.value.daily.wind_gusts_10m_max)} ${
+      forecastData.value.daily_units.wind_gusts_10m_max
+    }`;
+  });
+
+  const dominantWindDirection = computed(() => {
+    if (!forecastData.value) return "0";
+
+    return `${getMostFrequentNumber(
+      forecastData.value.daily.wind_direction_10m_dominant
+    )} ${forecastData.value.daily_units.wind_direction_10m_dominant}`;
+  });
+
+  const maximumDailyHumidity = computed(() => {
+    if (!forecastData.value) return "0";
+
+    return `${Math.max(...forecastData.value.daily.relative_humidity_2m_max)} ${
+      forecastData.value.daily_units.relative_humidity_2m_max
+    }`;
+  });
+
+  const maximumDailyPressure = computed(() => {
+    if (!forecastData.value) return "0";
+
+    return `${Math.max(...forecastData.value.daily.pressure_msl_max)} ${
+      forecastData.value.daily_units.pressure_msl_max
+    }`;
+  });
 
   const fetchForecast = async () => {
     try {
@@ -51,6 +93,12 @@ const useForecastStore = defineStore("forecast", () => {
     averageDailyTemperature,
     averageDailyTemperatureUnit,
     currentWeatherCode,
+    averageDailyFeelLikeTemperature,
+    maximumDailyWindSpeed,
+    maximumDailyWindGust,
+    dominantWindDirection,
+    maximumDailyHumidity,
+    maximumDailyPressure,
   };
 });
 

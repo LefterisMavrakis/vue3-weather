@@ -26,7 +26,7 @@ jest.mock("@/api/services/forecast/constants/weatherIconsMapping", () => ({
   },
 }));
 
-describe("TemperatureCard.vue", () => {
+describe("TemperatureWidget.vue", () => {
   it("renders temperature and label correctly for day", () => {
     const wrapper = mount(TemperatureWidget, {
       props: {

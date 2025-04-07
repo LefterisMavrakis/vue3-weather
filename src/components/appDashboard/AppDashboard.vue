@@ -10,6 +10,15 @@
             :weather_code="weatherCode ?? 0"
             :is_day="isDay === 1"
           />
+
+          <WeatherConditionsWidget
+            :feels_like_temp="forecastStore.averageDailyFeelLikeTemperature"
+            :wind_speed="forecastStore.maximumDailyWindSpeed"
+            :wind_gust="forecastStore.maximumDailyWindGust"
+            :wind_direction="forecastStore.dominantWindDirection"
+            :humidity="forecastStore.maximumDailyHumidity"
+            :pressure="forecastStore.maximumDailyPressure"
+          />
         </div>
       </template>
     </div>
@@ -20,6 +29,7 @@
 import { onMounted, computed } from "vue";
 import useForecastStore from "@/stores/forecast";
 import TemperatureWidget from "../temperatureWidget/TemperatureWidget.vue";
+import WeatherConditionsWidget from "../weatherConditionsWidget/WeatherConditionsWidget.vue";
 
 const forecastStore = useForecastStore();
 

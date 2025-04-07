@@ -13,6 +13,7 @@ body {
 
   * {
     font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
   }
 }
 
@@ -81,6 +82,15 @@ a {
     justify-content: space-between;
     align-items: center;
   }
+
+  &.justify-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &.horizontal-center {
+    justify-content: center;
+  }
 }
 
 .text-xxl {
@@ -113,5 +123,11 @@ a {
 .card {
   border-radius: var(--border-radius-5);
   background-color: #fff;
+  padding: 20px 20px;
+}
+
+.nested-card {
+  border-radius: var(--border-radius-4);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
 }
