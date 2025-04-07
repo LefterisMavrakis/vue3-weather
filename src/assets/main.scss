@@ -1,0 +1,117 @@
+@import "./cssVariables.css";
+
+body {
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.2;
+  max-width: 2000px;
+  background-color: var(--muted-bg);
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  margin: 0 auto;
+  font-weight: 14px;
+
+  * {
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+}
+
+.constraintPage {
+  width: 100%;
+  max-width: var(--constraint-container);
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+  font-weight: unset;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.gap-1 {
+    gap: 4px;
+  }
+
+  &.gap-2 {
+    gap: 8px;
+  }
+
+  &.gap-3 {
+    gap: 12px;
+  }
+
+  &.gap-4 {
+    gap: 16px;
+  }
+
+  &.gap-5 {
+    gap: 20px;
+  }
+
+  &.gap-6 {
+    gap: 30px;
+  }
+
+  &.noWrap {
+    flex-wrap: nowrap;
+  }
+
+  &.justify-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.justify-between {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.text-xxl {
+  font-size: 3em;
+  font-weight: 800;
+}
+
+.text-xl {
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.text-md {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.text-sm {
+  font-size: 1.2em;
+}
+
+.text-grey {
+  color: var(--indigo);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.card {
+  border-radius: var(--border-radius-5);
+  background-color: #fff;
+  padding: 10px 20px;
+}
