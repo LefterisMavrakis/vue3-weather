@@ -1,17 +1,18 @@
 import apiClient from "@/api/client";
+import { defaultParams } from "./constants/defaultParams";
+import { ApiForecastResponse } from "./types";
 
 const forecastEndpoint = "/v1/forecast";
 
 const forecastAPI = {
-  getForecast: () => {
+  getForecast: async () => {
     return apiClient
       .get(forecastEndpoint, {
         params: {
-          latitude: "40.5872",
-          longitude: "22.9482",
+          ...defaultParams,
         },
       })
-      .then(({ data }: { data: any }) => {
+      .then(({ data }: { data: ApiForecastResponse }) => {
         return data;
       });
   },

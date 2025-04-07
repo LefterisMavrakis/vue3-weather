@@ -1,5 +1,6 @@
-import forecastAPI from "../api";
 import apiClient from "@/api/client";
+import forecastAPI from "../api";
+import { defaultParams } from "../constants/defaultParams";
 
 jest.mock("@/api/client", () => ({
   get: jest.fn(),
@@ -13,10 +14,7 @@ describe("forecastAPI", () => {
     const result = await forecastAPI.getForecast();
 
     expect(apiClient.get).toHaveBeenCalledWith("/v1/forecast", {
-      params: {
-        latitude: "40.5872",
-        longitude: "22.9482",
-      },
+      params: defaultParams,
     });
 
     expect(result).toEqual(mockData);
