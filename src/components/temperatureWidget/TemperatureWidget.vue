@@ -1,25 +1,28 @@
 <template>
   <div class="temperatureWidgetWrapper card">
     <div class="flex justify-between">
-      <div class="temperatureValueWrapper flex column">
-        <div class="temperatureValue text-xxl">
+      <div class="temperatureValueWrapper flex column gap-1 justify-start">
+        <div v-if="!isLoading" class="temperatureValue text-xxl">
           {{ temperatureValue }}
         </div>
+        <div v-else class="skeleton" style="height: 55px; width: 100px"></div>
 
-        <div class="temperatureLabel text-grey text-sm">
+        <div v-if="!isLoading" class="temperatureLabel text-grey text-sm">
           {{ temperatureLabel }}
         </div>
+        <div v-else class="skeleton" style="height: 20px; width: 70px"></div>
       </div>
 
-      <div class="temperatureImage">
+      <div v-if="!isLoading" class="temperatureImage">
         <img :src="temperatureImage" alt="" />
       </div>
+      <div v-else class="skeleton" style="height: 100px; width: 100px"></div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from "vue";
+import { defineProps, computed, inject } from "vue";
 import { weatherIcons } from "@/api/services/forecast/constants/weatherIconsMapping";
 
 type Props = {
@@ -29,6 +32,8 @@ type Props = {
 };
 
 const props = defineProps<Props>();
+
+const isLoading = inject("loading");
 
 const temperatureValue = computed(() => `${props.temperature}`);
 

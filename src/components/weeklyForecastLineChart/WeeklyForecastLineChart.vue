@@ -1,19 +1,17 @@
 <template>
   <div class="weeklyForecastLineChart card flex column gap-3 justify-start">
     <div class="text-sm text-strong">Weekly Variation</div>
-    <template v-if="isLoading">
-      <div class="chart-skeleton">Chart Loading...</div>
-    </template>
-    <template v-else>
-      <div class="chartContainer full-width">
-        <VueApexCharts
-          width="100%"
-          type="line"
-          :options="chartOptions"
-          :series="chartSeries"
-        />
-      </div>
-    </template>
+    <div class="chartContainer full-width">
+      <VueApexCharts
+        v-if="!isLoading"
+        width="100%"
+        type="line"
+        :options="chartOptions"
+        :series="chartSeries"
+      />
+
+      <div v-else class="skeleton" style="min-height: 400px; width: 100%"></div>
+    </div>
   </div>
 </template>
 

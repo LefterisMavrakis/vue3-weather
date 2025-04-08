@@ -135,3 +135,22 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
 }
+
+.skeleton {
+  background-color: rgb(224, 224, 224);
+  border-radius: var(--border-radius-3);
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 12px;
+  }
+
+  .constraintPage {
+    padding: 0 10px;
+  }
+
+  .card {
+    padding: 20px 10px;
+  }
+}

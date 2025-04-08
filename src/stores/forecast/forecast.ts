@@ -151,6 +151,7 @@ const useForecastStore = defineStore("forecast", () => {
 
   const fetchForecast = async (params?: ApiForecastAvailableRequestParams) => {
     try {
+      isForecastLoading.value = true;
       const result = await forecastAPI.getForecast(params);
 
       forecastData.value = result;

@@ -1,36 +1,32 @@
 <template>
   <div class="appDashboard">
     <div class="constraintPage">
-      <template v-if="isLoading"> Forecast is loading </template>
-      <template v-else>
-        <div class="widgetsContainer flex column gap-4">
-          <TimeSelect v-model="selectedTimePreset" />
+      <div class="widgetsContainer flex column gap-4">
+        <TimeSelect v-model="selectedTimePreset" />
 
-          <TemperatureWidget
-            :temperature="averageTemperature"
-            :unit="averageTemperatureUnit ?? '°C'"
-            :weather_code="weatherCode ?? 0"
-            :is_day="isDay === 1"
-          />
+        <TemperatureWidget
+          :temperature="averageTemperature"
+          :weather_code="weatherCode ?? 0"
+          :is_day="isDay === 1"
+        />
 
-          <WeatherConditionsWidget
-            :feels_like_temp="feelsLikeTemperature"
-            :wind_speed="windSpeed"
-            :wind_gust="windGust"
-            :wind_direction="windDirection"
-            :humidity="humidity"
-            :pressure="pressure"
-          />
+        <WeatherConditionsWidget
+          :feels_like_temp="feelsLikeTemperature"
+          :wind_speed="windSpeed"
+          :wind_gust="windGust"
+          :wind_direction="windDirection"
+          :humidity="humidity"
+          :pressure="pressure"
+        />
 
-          <WeeklyForecastLineChart />
-        </div>
-      </template>
+        <WeeklyForecastLineChart />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed, ref, watch } from "vue";
+import { onMounted, computed, ref, watch, provide } from "vue";
 import useForecastStore from "@/stores/forecast";
 import TemperatureWidget from "../temperatureWidget/TemperatureWidget.vue";
 import WeatherConditionsWidget from "../weatherConditionsWidget/WeatherConditionsWidget.vue";
@@ -40,15 +36,14 @@ import TimeSelect from "../timeSelect/TimeSelect.vue";
 const forecastStore = useForecastStore();
 
 const isLoading = computed(() => forecastStore.isForecastLoading);
+provide("loading", isLoading);
+
 const averageTemperature = computed(() => {
   if (selectedTimePreset.value === "now") {
     return forecastStore.currentTemperature;
   }
   return forecastStore.averageDailyTemperature;
 });
-const averageTemperatureUnit = computed(
-  () => forecastStore.averageDailyTemperatureUnit
-);
 
 const weatherCode = computed(() => {
   if (selectedTimePreset.value === "now") {

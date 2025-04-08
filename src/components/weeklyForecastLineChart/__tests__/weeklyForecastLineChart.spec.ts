@@ -14,8 +14,7 @@ describe("WeeklyForecastLineChart.vue", () => {
         },
       });
 
-      expect(wrapper.find(".chart-skeleton").exists()).toBe(true);
-      expect(wrapper.find(".chartContainer").exists()).toBe(false);
+      expect(wrapper.find(".skeleton").exists()).toBe(true);
 
       await flushPromises();
 
@@ -23,8 +22,7 @@ describe("WeeklyForecastLineChart.vue", () => {
         forecast_days: 10,
       });
 
-      expect(wrapper.find(".chart-skeleton").exists()).toBe(false);
-      expect(wrapper.find(".chartContainer").exists()).toBe(true);
+      expect(wrapper.find(".skeleton").exists()).toBe(false);
     });
 
     describe("and the forecast_days prop does not exist", () => {
