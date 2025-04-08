@@ -19,6 +19,8 @@
             :humidity="forecastStore.maximumDailyHumidity"
             :pressure="forecastStore.maximumDailyPressure"
           />
+
+          <WeeklyForecastLineChart />
         </div>
       </template>
     </div>
@@ -30,6 +32,7 @@ import { onMounted, computed } from "vue";
 import useForecastStore from "@/stores/forecast";
 import TemperatureWidget from "../temperatureWidget/TemperatureWidget.vue";
 import WeatherConditionsWidget from "../weatherConditionsWidget/WeatherConditionsWidget.vue";
+import WeeklyForecastLineChart from "../weeklyForecastLineChart/WeeklyForecastLineChart.vue";
 
 const forecastStore = useForecastStore();
 
@@ -54,6 +57,6 @@ onMounted(() => {
 
 <style scoped>
 .appDashboard {
-  margin: 20px 0 0;
+  margin: 20px 0;
 }
 </style>

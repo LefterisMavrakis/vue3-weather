@@ -14,6 +14,29 @@ export type ApiForecastResponse = {
   daily: Daily;
 };
 
+export type ApiForecastAvailableRequestParams = {
+  forecast_days?:
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16;
+  start_date?: string;
+  end_date?: string;
+};
+
 export type CurrentWeather = {
   time: string;
   interval: number;
@@ -46,7 +69,7 @@ export type Daily = {
 };
 
 export type DailyUnits = {
-  time: string;
+  time: string | string[];
   temperature_2m_max: string;
   apparent_temperature_max: string;
   wind_speed_10m_max: string;

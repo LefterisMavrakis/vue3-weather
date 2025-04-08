@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="temperatureWidgetWrapper card">
     <div class="flex justify-between">
       <div class="temperatureValueWrapper flex column">
         <div class="temperatureValue text-xxl">
@@ -60,3 +60,8 @@ const temperatureImage = computed(() => {
   );
 });
 </script>
+<style scoped>
+.temperatureWidgetWrapper {
+  padding: 20px;
+}
+</style>

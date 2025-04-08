@@ -112,6 +112,10 @@ a {
   font-size: 1.2em;
 }
 
+.text-strong {
+  font-weight: 600;
+}
+
 .text-grey {
   color: var(--indigo);
 }
@@ -123,7 +127,7 @@ a {
 .card {
   border-radius: var(--border-radius-5);
   background-color: #fff;
-  padding: 20px 20px;
+  padding: 40px 20px;
 }
 
 .nested-card {

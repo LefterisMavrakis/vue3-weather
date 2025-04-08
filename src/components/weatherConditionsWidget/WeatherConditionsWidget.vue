@@ -57,9 +57,6 @@ const sections = computed(() => {
 });
 </script>
 <style scoped>
-.weatherConditionsWrapper {
-  padding: 40px 20px;
-}
 .weatherInfo {
   flex: 1 1 calc((100% - 24px) / 3);
   min-height: 150px;

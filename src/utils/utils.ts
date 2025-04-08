@@ -17,3 +17,10 @@ export const getAverageNumber = (numbers: number[]): number => {
     }, 0) / numbers.length
   );
 };
+
+export const formatToDayMonth = (time: string | number | Date): string => {
+  const date = new Date(time);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  return `${day}/${month}`;
+};
