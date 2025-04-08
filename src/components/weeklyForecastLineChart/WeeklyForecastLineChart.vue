@@ -1,5 +1,5 @@
 <template>
-  <div class="card flex column gap-3 justify-start">
+  <div class="weeklyForecastLineChart card flex column gap-3 justify-start">
     <div class="text-sm text-strong">Weekly Variation</div>
     <template v-if="isLoading">
       <div class="chart-skeleton">Chart Loading...</div>

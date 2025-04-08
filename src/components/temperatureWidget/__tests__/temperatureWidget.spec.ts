@@ -30,8 +30,7 @@ describe("TemperatureWidget.vue", () => {
   it("renders temperature and label correctly for day", () => {
     const wrapper = mount(TemperatureWidget, {
       props: {
-        temperature: 25,
-        unit: "°C",
+        temperature: "25 °C",
         weather_code: 1,
         is_day: true,
       },
@@ -47,8 +46,7 @@ describe("TemperatureWidget.vue", () => {
   it("renders temperature and label correctly for night", () => {
     const wrapper = mount(TemperatureWidget, {
       props: {
-        temperature: 18,
-        unit: "°C",
+        temperature: "18 °C",
         weather_code: 1,
         is_day: false,
       },
@@ -64,8 +62,7 @@ describe("TemperatureWidget.vue", () => {
   it("handles missing weather code gracefully", () => {
     const wrapper = mount(TemperatureWidget, {
       props: {
-        temperature: 20,
-        unit: "°C",
+        temperature: "20 °C",
         weather_code: 999,
         is_day: true,
       },

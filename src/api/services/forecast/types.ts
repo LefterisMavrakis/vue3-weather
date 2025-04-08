@@ -10,6 +10,8 @@ export type ApiForecastResponse = {
   current_weather: CurrentWeather;
   hourly_units: HourlyUnits;
   hourly: Hourly;
+  minutely_15: Minutely15;
+  minutely_15_units: Minutely15Units;
   daily_units: DailyUnits;
   daily: Daily;
 };
@@ -66,6 +68,7 @@ export type Daily = {
   wind_direction_10m_dominant: number[];
   relative_humidity_2m_max: number[];
   pressure_msl_max: number[];
+  weather_code?: number[];
 };
 
 export type DailyUnits = {
@@ -77,6 +80,7 @@ export type DailyUnits = {
   wind_direction_10m_dominant: string;
   relative_humidity_2m_max: string;
   pressure_msl_max: string;
+  weather_code?: string;
 };
 
 export type Hourly = {
@@ -88,6 +92,7 @@ export type Hourly = {
   wind_speed_10m: number[];
   wind_gusts_10m: number[];
   wind_direction_10m: number[];
+  weather_code?: number[];
 };
 
 export type HourlyUnits = {
@@ -99,4 +104,29 @@ export type HourlyUnits = {
   wind_speed_10m: string;
   wind_gusts_10m: string;
   wind_direction_10m: string;
+  weather_code?: string;
+};
+
+export type Minutely15 = {
+  time: string[];
+  temperature_2m: number[];
+  apparent_temperature: number[];
+  relative_humidity_2m: number[];
+  pressure_msl: number[];
+  wind_speed_10m: number[];
+  wind_gusts_10m: number[];
+  wind_direction_10m: number[];
+  weather_code?: number[];
+};
+
+export type Minutely15Units = {
+  time: string;
+  temperature_2m: string;
+  apparent_temperature: string;
+  relative_humidity_2m: string;
+  pressure_msl: string;
+  wind_speed_10m: string;
+  wind_gusts_10m: string;
+  wind_direction_10m: string;
+  weather_code?: string;
 };

@@ -23,15 +23,14 @@ import { defineProps, computed } from "vue";
 import { weatherIcons } from "@/api/services/forecast/constants/weatherIconsMapping";
 
 type Props = {
-  temperature: number;
-  unit: string;
+  temperature: string;
   weather_code: number;
   is_day: boolean;
 };
 
 const props = defineProps<Props>();
 
-const temperatureValue = computed(() => `${props.temperature} ${props.unit}`);
+const temperatureValue = computed(() => `${props.temperature}`);
 
 const temperatureLabel = computed(() => {
   if (props.is_day) {
