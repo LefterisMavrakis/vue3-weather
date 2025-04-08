@@ -1,5 +1,5 @@
 <template>
-  <div class="timePresetSelect flex gap-3">
+  <div class="timePresetSelect card flex gap-3">
     <button
       class="nowBtn"
       :class="{ activeOption: activeOption === 'now' }"
@@ -67,6 +67,10 @@ const handleDateChange = () => {
 </script>
 
 <style scoped lang="scss">
+.timePresetSelect {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
 button {
   padding: 0.5rem 1rem;
   background-color: #eee;
@@ -76,10 +80,10 @@ button {
 }
 
 button:hover {
-  background-color: rgb(186, 233, 186);
+  background-color: #e7f3dd;
 
   &.activeOption {
-    background-color: rgb(186, 233, 186, 0.5);
+    background-color: #e7f3dd;
   }
 }
 
@@ -96,6 +100,7 @@ input {
 
 .activeOption {
   border: 1px solid rgb(14, 190, 14);
-  background-color: rgb(186, 233, 186);
+  background-color: #e7f3dd;
+  color: #2e6002;
 }
 </style>

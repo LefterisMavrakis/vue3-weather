@@ -67,5 +67,6 @@ const temperatureImage = computed(() => {
 <style scoped>
 .temperatureWidgetWrapper {
   padding: 20px;
+  border-bottom: 5px solid var(--muted-bg);
 }
 </style>

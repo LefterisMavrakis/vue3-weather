@@ -18,7 +18,8 @@
   --border-radius-5: 20px;
   --border-radius-6: 24px;
   --border-radius-circle: 50%;
-  --muted-bg: rgba(0, 0, 0, 0.04);
+  --muted-bg: rgba(0, 0, 0, 0.06);
+  --light-bg: rgb(254 254 254);
   --z-index-max: 2000;
   --constraint-container: 800px;
 }

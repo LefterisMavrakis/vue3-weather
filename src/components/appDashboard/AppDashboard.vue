@@ -128,6 +128,12 @@ watch(selectedTimePreset, (newValue) => {
 
 <style scoped>
 .appDashboard {
-  margin: 20px 0;
+  margin: 20px 0 40px;
+}
+.widgetsContainer {
+  background-color: #fff;
+  box-shadow: 0px 10px 45px -40px rgba(0, 0, 0);
+  border-radius: var(--border-radius-6);
+  padding: 10px 0;
 }
 </style>
