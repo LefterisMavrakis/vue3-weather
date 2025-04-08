@@ -62,7 +62,9 @@ export type CurrentWeatherUnits = {
 export type Daily = {
   time: string[];
   temperature_2m_max: number[];
+  temperature_2m_mean?: number[];
   apparent_temperature_max: number[];
+  apparent_temperature_mean?: number[];
   wind_speed_10m_max: number[];
   wind_gusts_10m_max: number[];
   wind_direction_10m_dominant: number[];
@@ -81,6 +83,8 @@ export type DailyUnits = {
   relative_humidity_2m_max: string;
   pressure_msl_max: string;
   weather_code?: string;
+  apparent_temperature_mean?: string;
+  temperature_2m_mean?: string;
 };
 
 export type Hourly = {

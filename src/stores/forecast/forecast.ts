@@ -94,8 +94,8 @@ const useForecastStore = defineStore("forecast", () => {
       return "0";
     }
 
-    return `${forecastData.value.daily.temperature_2m_max[0].toFixed(1)} ${
-      forecastData.value.daily_units.temperature_2m_max
+    return `${forecastData.value.daily.temperature_2m_mean?.[0].toFixed(1)} ${
+      forecastData.value.daily_units.temperature_2m_mean
     }`;
   });
 
@@ -110,9 +110,9 @@ const useForecastStore = defineStore("forecast", () => {
   const averageDailyFeelLikeTemperature = computed(() => {
     if (!forecastData.value) return "0";
 
-    return `${forecastData.value.daily.apparent_temperature_max[0].toFixed(
+    return `${forecastData.value.daily.apparent_temperature_mean?.[0].toFixed(
       1
-    )} ${forecastData.value?.daily_units.apparent_temperature_max}`;
+    )} ${forecastData.value?.daily_units.apparent_temperature_mean}`;
   });
 
   const averageDailyTemperatureUnit = computed(
