@@ -5,8 +5,6 @@ This widget fetches **real-time** and **forecasted weather data** from the [Open
 
 ## 🛠️ Project Setup
 
-## Project setup
-
 ### Clone the repo and jump to app folder
 
 ```
