@@ -94,7 +94,13 @@ const useForecastStore = defineStore("forecast", () => {
       return "0";
     }
 
-    return `${forecastData.value.daily.temperature_2m_mean?.[0].toFixed(1)} ${
+    const meanTemp = forecastData.value.daily.temperature_2m_mean?.[0];
+
+    if (!meanTemp) {
+      return "Not available";
+    }
+
+    return `${meanTemp.toFixed(1)} ${
       forecastData.value.daily_units.temperature_2m_mean
     }`;
   });
@@ -110,9 +116,16 @@ const useForecastStore = defineStore("forecast", () => {
   const averageDailyFeelLikeTemperature = computed(() => {
     if (!forecastData.value) return "0";
 
-    return `${forecastData.value.daily.apparent_temperature_mean?.[0].toFixed(
-      1
-    )} ${forecastData.value?.daily_units.apparent_temperature_mean}`;
+    const meanFeelLikeTemp =
+      forecastData.value.daily.apparent_temperature_mean?.[0];
+
+    if (!meanFeelLikeTemp) {
+      return "Not available";
+    }
+
+    return `${meanFeelLikeTemp.toFixed(1)} ${
+      forecastData.value?.daily_units.apparent_temperature_mean
+    }`;
   });
 
   const averageDailyTemperatureUnit = computed(
@@ -122,31 +135,74 @@ const useForecastStore = defineStore("forecast", () => {
   const maximumDailyWindSpeed = computed(() => {
     if (!forecastData.value) return "0";
 
-    return `${forecastData.value.daily.wind_speed_10m_max[0]} ${forecastData.value.daily_units.wind_speed_10m_max}`;
+    const windspeed = forecastData.value.daily.wind_speed_10m_max[0];
+
+    if (!windspeed) {
+      return "Not available";
+    }
+
+    const windspeedUnit = forecastData.value.daily_units.wind_speed_10m_max;
+
+    return `${windspeed} ${windspeedUnit}`;
   });
 
   const maximumDailyWindGust = computed(() => {
     if (!forecastData.value) return "0";
 
-    return `${forecastData.value.daily.wind_gusts_10m_max[0]} ${forecastData.value.daily_units.wind_gusts_10m_max}`;
+    const windGust = forecastData.value.daily.wind_gusts_10m_max[0];
+
+    if (!windGust) {
+      return "Not available";
+    }
+
+    const windGustUnit = forecastData.value.daily_units.wind_gusts_10m_max;
+
+    return `${windGust} ${windGustUnit}`;
   });
 
   const dominantWindDirection = computed(() => {
     if (!forecastData.value) return "0";
 
-    return `${forecastData.value.daily.wind_direction_10m_dominant[0]} ${forecastData.value.daily_units.wind_direction_10m_dominant}`;
+    const windDirection =
+      forecastData.value.daily.wind_direction_10m_dominant[0];
+
+    if (!windDirection) {
+      return "Not available";
+    }
+
+    const windDirectionUnit =
+      forecastData.value.daily_units.wind_direction_10m_dominant;
+
+    return `${windDirection} ${windDirectionUnit}`;
   });
 
   const maximumDailyHumidity = computed(() => {
     if (!forecastData.value) return "0";
 
-    return `${forecastData.value.daily.relative_humidity_2m_max[0]} ${forecastData.value.daily_units.relative_humidity_2m_max}`;
+    const humidity = forecastData.value.daily.relative_humidity_2m_max[0];
+
+    if (!humidity) {
+      return "Not available";
+    }
+
+    const humidityUnit =
+      forecastData.value.daily_units.relative_humidity_2m_max;
+
+    return `${humidity} ${humidityUnit}`;
   });
 
   const maximumDailyPressure = computed(() => {
     if (!forecastData.value) return "0";
 
-    return `${forecastData.value.daily.pressure_msl_max[0]} ${forecastData.value.daily_units.pressure_msl_max}`;
+    const pressure = forecastData.value.daily.pressure_msl_max[0];
+
+    if (!pressure) {
+      return "Not available";
+    }
+
+    const pressureUnit = forecastData.value.daily_units.pressure_msl_max;
+
+    return `${pressure} ${pressureUnit}`;
   });
 
   const fetchForecast = async (params?: ApiForecastAvailableRequestParams) => {
