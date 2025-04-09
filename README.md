@@ -1,7 +1,7 @@
 # 🌤️ Weather Widget
 
 A simple, elegant, and responsive weather widget built with **Vue 3** and **TypeScript**.  
-This widget fetches **real-time** and **forecasted weather data** from the [Open-Meteo API](https://open-meteo.com/) for the area of Thessaloniki, and displays key weather details, forecast info, and a 7-day max temperature line chart. You can view the app live [here](https://scat-8ab57.web.app/).
+This widget fetches **real-time** and **forecasted weather data** from the <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo API</a> for the area of Thessaloniki, and displays key weather details, forecast info, and a 7-day max temperature line chart. You can view the app live <a href="https://scat-8ab57.web.app/" target="_blank" rel="noopener noreferrer">here</a>.
 
 ## 🛠️ Project Setup
 
