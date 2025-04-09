@@ -1,7 +1,7 @@
 <template>
   <div class="appDashboard">
     <div class="constraintPage">
-      <div class="widgetsContainer flex column gap-4">
+      <div class="widgetsContainer flex column">
         <TimeSelect v-model="selectedTimePreset" />
 
         <TemperatureWidget
